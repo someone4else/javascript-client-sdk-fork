@@ -339,13 +339,11 @@ export class Client extends AsyncEventEmitter<Events> {
   }
 
   /**
-   * Fetches the configuration of the server if it has not been already fetched.
+   * Fetches the configuration of the server.
    */
   async #fetchConfiguration(): Promise<void> {
-    if (!this.configuration) {
-      this.configuration = await this.api.get("/");
-      this.#setConfigured(true);
-    }
+    this.configuration = await this.api.get("/");
+    this.#setConfigured(true);
   }
 
   /**
